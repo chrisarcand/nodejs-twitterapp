@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-twitterapp",
+  "version": "0.0.0",
+  "description": "A Node.js app for interacting with the Twitter API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChrisArcand/nodejs-twitterapp.git"
+  },
+  "author": "Chris Arcand <chris@chrisarcand.com>",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/ChrisArcand/nodejs-twitterapp/issues"
+  },
+  "dependencies": {
+    "oauth": "~0.9.10"
+  }
+}
