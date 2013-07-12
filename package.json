@@ -18,6 +18,7 @@
   "dependencies": {
     "oauth": "~0.9.10",
     "jade": "~0.32.0",
-    "express": "~3.3.4"
+    "express": "~3.3.4",
+    "request": "~2.22.0"
   }
 }
