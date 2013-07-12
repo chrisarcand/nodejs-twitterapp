@@ -16,6 +16,7 @@
     "url": "https://github.com/ChrisArcand/nodejs-twitterapp/issues"
   },
   "dependencies": {
-    "oauth": "~0.9.10"
+    "oauth": "~0.9.10",
+    "jade": "~0.32.0"
   }
 }
