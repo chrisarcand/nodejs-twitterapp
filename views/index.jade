@@ -13,7 +13,7 @@ block content
 		for tweet in tweets
 			li
 				img(src=tweet.user.profile_image_url)
-				|@#{tweet.user.screen_name}
+				a(href='/timeline/'+tweet.user.screen_name)@#{tweet.user.screen_name}
 				|#{tweet.text}
 		else
 			li Enter a search query
