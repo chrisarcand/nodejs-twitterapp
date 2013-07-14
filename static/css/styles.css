@@ -1,0 +1,35 @@
+/* Main Stylesheet */
+
+body {
+	padding: 10px;
+}
+
+#tweetlist {
+	list-style-type: none;
+}
+
+#tweetlist li {
+	margin-bottom: 20px;
+}
+
+#tweetlist li img {
+	margin-right: 10px;
+	float:left;
+}
+
+.smalltext {
+	font-size:10px;
+	font-weight:bold;
+}
+
+.grey-border {
+	border: 1px solid #CCC;
+}
+
+.btn {
+	margin: 10px;
+}
+
+.no-margin {
+	margin:0px;
+}

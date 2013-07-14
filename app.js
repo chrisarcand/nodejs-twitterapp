@@ -14,6 +14,7 @@ var app = express();
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.use('/static', express.static(__dirname + '/static'));
   app.use(express.cookieParser("dRewabraPhUxes9akemaPheW"));
   app.use(express.session());
 });
@@ -34,7 +35,7 @@ app.get('/', function (req, res) {
   console.log('\n\nRoute \'/\' requested, session info:');
   console.log(req.session);
   if (!req.session.oauth || !req.session.oauth.screen_name) {
-    res.render('login', { title: 'Login Screen' });
+    res.render('login', { title: 'My super simplistic Node.js app' });
   }
   else {
     res.redirect('/search');
@@ -109,12 +110,12 @@ app.get('/search', function (req, res) {
             console.log('JSON returned from Twitter: ');
             utils.ppJSON(body);
             var tweets = body.statuses;
-            res.render('index', { title: 'title', tweets: tweets });
+            res.render('index', { title: 'Results of \'' + queryData['searchterm'] + '\'', tweets: tweets });
           }
       });
     } else {
       //No query string, so just show the search field
-      res.render('index', { title: 'Search', tweets: {}});
+      res.render('index', { title: 'My super simplistic Tweet Search', tweets: {}});
     }
   } else {
       //Not authorized, so send to root for authorization
@@ -144,7 +145,7 @@ app.get('/timeline/:id', function (req, res) {
           console.log('JSON returned from Twitter: ');
           utils.ppJSON(body);
           var tweets = body;
-          res.render('timeline', { title: 'Timeline', tweets: tweets, screen_name: req.params.id});
+          res.render('timeline', { title: '@' + req.params.id + '\'s Timeline', tweets: tweets, screen_name: req.params.id});
         }
     });
   } else {
@@ -176,13 +177,15 @@ app.get('/tweetmap/:id', function (req, res) {
           utils.ppJSON(body);
           var tweets = body;
           var coords = new Array();
+          var messages = new Array();
           for (tweet in tweets) {
             if (tweets[tweet].place){
               //Keep in mind that these coordinates are 'backwards'. The Twitter API sends long, lat instead of lat, long. 
               coords.push(tweets[tweet].place.bounding_box.coordinates[0][0]);
+              messages.push(tweets[tweet].text);
             }
           }
-          var locations = {coordinates:coords};
+          var locations = {coordinates:coords, messages:messages};
           console.log(locations);
           res.render('tweetmap', { title: 'Tweetmap', tweets: tweets, screen_name: req.params.id, locations: JSON.stringify(locations) });
         }

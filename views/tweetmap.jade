@@ -28,8 +28,9 @@ html
       mapOptions);
 
       var bounds = new google.maps.LatLngBounds();
+      var infowindow = new google.maps.InfoWindow();
       
-      var marker, i; 
+      var marker; 
       var locations = !{locations};
       if (!isEmpty(locations.coordinates)) {
         for (coordinate in locations.coordinates) {
@@ -39,7 +40,16 @@ html
             map: map,
             title: 'Tweets'
           });
+
           bounds.extend(marker.position);
+
+
+          google.maps.event.addListener(marker, 'click', (function(marker, coordinate) {
+            return function() {
+            infowindow.setContent(locations.messages[coordinate]);
+            infowindow.open(map, marker);
+            }
+          })(marker, coordinate));
         }
         map.fitBounds(bounds);
       }

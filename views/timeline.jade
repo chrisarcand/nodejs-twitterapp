@@ -3,16 +3,19 @@ extends layout
 block content
 	h1= title
 	p Welcome to #{title}
-	a(href="/")<-Back
-	a(href="/tweetmap/#{screen_name}") Map my Tweets!
+	a(href='/search', class='btn btn-primary') New Search
+	a(href='/tweetmap/#{screen_name}', class='btn btn-primary') Map these Tweets!
+	a(href='/logout', class='btn btn-primary') Logout
 	if tweets.errors
 		for error in tweets.errors
 			p #{error.message}
 	else
-		ul
+		ul#tweetlist
 			for tweet in tweets
 				li
-					img(src=tweet.user.profile_image_url)
-					|#{tweet.text}
+					span.smalltext TWEETED BY: 
+					a(href='/timeline/'+tweet.user.screen_name)@#{tweet.user.screen_name}
+					img.img-rounded.grey-border(src=tweet.user.profile_image_url)
+					br
+					p #{tweet.text}
 
-	a(href="/logout") Logout
