@@ -1,6 +1,21 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  
+	h1= title
+	p Welcome to #{title}
+	form(name="input", action="/search", method="get")
+		key Search Tweets 
+			input(type="text", name="searchterm")
+
+		input(type="submit", value="Submit")
+
+	ul
+		for tweet in tweets
+			li
+				img(src=tweet.user.profile_image_url)
+				|@#{tweet.user.screen_name}
+				|#{tweet.text}
+		else
+			li Enter a search query
+
+	a(href="/logout") Logout
