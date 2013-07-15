@@ -7,7 +7,7 @@ A very simplistic Node.js app for interacting with the Twitter and Google Maps A
 
 Deployed to Heroku at [http://pure-savannah-7218.herokuapp.com/](http://pure-savannah-7218.herokuapp.com/)
 
-If you want to test locally, just clone the repository, run <code>npm install</code> to install dependencies from package.json, and one more final step: You *must* change the callback URL in app.js for Twitter back to <code>localhost:8888</code>. An easy switch for production/development instances will be added in the future, but it is a quick change to have it deployed now. (AKA: Don't bother, just visit Heroku!)
+If you want to test locally, just clone the repository, run <code>npm install</code> to install dependencies from package.json, and one more final step: You *must* change the callback URL in app.js for Twitter back to <code>localhost:5000</code>. An easy switch for production/development instances will be added in the future, but it is a quick change to have it deployed now. (AKA: Don't bother, just visit Heroku!)
 
 ###Behavior
 The app signs in with Twitter's OAuth authentication and provides you with a screen to search for keywords using Twitter's GET search/tweets. You may click any of the Tweeter's usernames to be brought to another screen with tweets from their timeline. You may also map the tweets on a Google Map to see where they tweeted from (clicking on the pins returns the tweet text). 
