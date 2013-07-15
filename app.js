@@ -19,7 +19,9 @@ app.configure(function(){
   app.use(express.session());
 });
 
-var callback = 'http://localhost:' + config.port + '/callback';
+//TODO: Now that I'm deployed to Heroku, I need to set up separate configs
+//for production and development instances of the callback...
+var callback = 'http://pure-savannah-7218.herokuapp.com/callback';
 
 var twitter = new OAuth('https://api.twitter.com/oauth/request_token', 
                    'https://api.twitter.com/oauth/access_token', 
