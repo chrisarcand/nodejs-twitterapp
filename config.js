@@ -1,4 +1,4 @@
 /* Configuration file */
 
 exports.site = "localhost";
-exports.port = 8888;
+exports.port = 5000;

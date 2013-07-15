@@ -22,6 +22,7 @@ app.configure(function(){
 //TODO: Now that I'm deployed to Heroku, I need to set up separate configs
 //for production and development instances of the callback...
 var callback = 'http://pure-savannah-7218.herokuapp.com/callback';
+//var callback = 'http://localhost:5000/callback';
 
 var twitter = new OAuth('https://api.twitter.com/oauth/request_token', 
                    'https://api.twitter.com/oauth/access_token', 
@@ -92,7 +93,7 @@ app.get('/search', function (req, res) {
     var queryData = url.parse(req.url, true).query;
     if (!utils.isEmpty(queryData) && queryData['searchterm']) {
       console.log('Query submitted: ' + JSON.stringify(queryData));
-      var apicall = 'https://api.twitter.com/1.1/search/tweets.json?q=' + queryData['searchterm'];
+      var apicall = 'https://api.twitter.com/1.1/search/tweets.json?q=' + encodeURIComponent(queryData['searchterm']);
       console.log('API call: ' + apicall);
       var oauth = {
           consumer_key: keys.consumer_key,
