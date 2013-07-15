@@ -198,5 +198,5 @@ app.get('/tweetmap/:id', function (req, res) {
 
 
 
-app.listen(config.port);
+app.listen(process.env.PORT || config.port);
 console.log('Server started on port ' + config.port);
